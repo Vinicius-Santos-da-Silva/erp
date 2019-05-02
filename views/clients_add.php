@@ -62,4 +62,4 @@
 
 </form>
 
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/script_clients_add.js"></script>
+<script type="text/javascript" src="<?php echo BASE; ?>/assets/js/script_clients_add.js"></script>

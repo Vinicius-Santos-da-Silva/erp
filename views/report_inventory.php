@@ -6,4 +6,4 @@
 		<input type="submit" value="Gerar Relatório" />
 	</div>
 </form>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/report_inventory.js"></script>
+<script type="text/javascript" src="<?php echo BASE; ?>/assets/js/report_inventory.js"></script>

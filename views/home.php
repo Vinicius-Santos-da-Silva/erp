@@ -43,8 +43,8 @@ var expenses_list = <?php echo json_encode(array_values($expenses_list)); ?>;
 var status_name_list = <?php echo json_encode(array_values($statuses)); ?>;
 var status_list = <?php echo json_encode(array_values($status_list)); ?>;
 </script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/Chart.min.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/script_home.js"></script>
+<script type="text/javascript" src="<?php echo BASE; ?>/assets/js/Chart.min.js"></script>
+<script type="text/javascript" src="<?php echo BASE; ?>/assets/js/script_home.js"></script>
 
 
 

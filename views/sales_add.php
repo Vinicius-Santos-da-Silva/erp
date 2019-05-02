@@ -41,5 +41,5 @@
 
 	<input type="submit" value="Adicionar Venda" />
 </form>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/jquery.mask.js"></script>
-<script type="text/javascript" src="<?php echo BASE_URL; ?>/assets/js/script_sales_add.js"></script>
+<script type="text/javascript" src="<?php echo BASE; ?>/assets/js/jquery.mask.js"></script>
+<script type="text/javascript" src="<?php echo BASE; ?>/assets/js/script_sales_add.js"></script>
