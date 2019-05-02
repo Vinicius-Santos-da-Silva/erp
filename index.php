@@ -24,7 +24,7 @@ spl_autoload_register(function ($class){
 
             require_once 'core/'.$class.'.php';
     }else{
-			print_r('else');echo PHP_EOL;
+			//print_r('else');echo PHP_EOL;
 
     }
 });

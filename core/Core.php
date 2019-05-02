@@ -29,7 +29,7 @@ class Core {
 			$currentAction = 'index';
 		}
 
-		print_r($currentController);echo PHP_EOL;
+		//print_r($currentController);echo PHP_EOL;
 
 		$c = new $currentController();
 		call_user_func_array(array($c, $currentAction), $params);
