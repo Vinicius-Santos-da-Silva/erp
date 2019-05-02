@@ -6,6 +6,8 @@ require 'vendor/autoload.php';
 require 'config.php';
 
 define('BASE_URL', 'http://ec2-18-191-78-63.us-east-2.compute.amazonaws.com/contaazul/index.php');
+#define('BASE_URL', 'http://localhost/contaazul');
+
 
 
 spl_autoload_register(function ($class){
