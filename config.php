@@ -14,7 +14,6 @@ if(ENVIRONMENT == 'development') {
 	$config['dbuser'] = 'root';
 	$config['dbpass'] = '$T44zg1g1';
 } else {
-	define('BASE_URL', 'http://ec2-18-191-78-63.us-east-2.compute.amazonaws.com/contaazul');
 	define('BASEPATH', __DIR__.'/');
 	$config['dbname'] = 'YY3Vx3rhhr';
 	$config['host'] = 'remotemysql.com';
