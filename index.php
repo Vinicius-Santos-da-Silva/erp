@@ -5,8 +5,6 @@ ini_set("display_errors", "on");
 require 'vendor/autoload.php';
 require 'config.php';
 
-define('BASE_URL', 'http://localhost/contaazul');
-define('BASEPATH', __DIR__.'/');
 
 spl_autoload_register(function ($class){
     if(strpos($class, 'Controller') > -1) {
