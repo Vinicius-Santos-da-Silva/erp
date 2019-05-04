@@ -69,47 +69,52 @@ class Purchases extends model {
 
 	}
 
-	public function addSale($id_company, $id_client, $id_user, $quant, $status) {
+	public function addPurchase($id_company, $id_user, $name, $quant, $preco_unidade, $preco_total) {
 		$i = new Inventory();
 
-		$sql = $this->db->prepare("INSERT INTO sales SET id_company = :id_company, id_client = :id_client, id_user = :id_user, date_sale = NOW(), total_price = :total_price, status = :status");
-		$sql->bindValue(":id_company", $id_company);
-		$sql->bindValue(":id_client", $id_client);
-		$sql->bindValue(":id_user", $id_user);
-		$sql->bindValue(":total_price", '0');
-		$sql->bindValue(":status", $status);
+		$sql = $this->db->prepare("
+			INSERT INTO purchases 
+			SET id_company 		= :id_company, 
+				id_user 		= :id_user, 
+				total_price 	= :total_price,
+				date_purchase   = NOW()"
+			);
+		
+
+		$sql->bindValue(":id_company"	, $id_company);
+		$sql->bindValue(":id_user"		, $id_user);
+		$sql->bindValue(":total_price"	, $preco_total);
+		$sql->execute();
+		//debug($sql->fetchAll(),1);
+
+		$id_purchases = $this->db->lastInsertId();
+		//debug($id_purchases,1);
+
+		$sql = $this->db->prepare("
+			INSERT INTO purchases_products 
+			SET 
+				id_company = :id_company, 
+				name = :name, 
+				id_purchase = :id_purchases, 
+				quant = :quant, 
+				purchase_price = :total_price");
+
+		$sql->bindValue(":id_company"	, $id_company);
+		$sql->bindValue(":name"			, $name);
+		$sql->bindValue(":id_purchases" , $id_purchases);
+		$sql->bindValue(":total_price"	, $preco_total);
+		$sql->bindValue(":quant"		, $quant);
 		$sql->execute();
 
-		$id_sale = $this->db->lastInsertId();
+		$id_purchases = $this->db->lastInsertId();
+		//debug($id_purchases,1);
+		$sql = $this->db->prepare("INSERT INTO inventory SET id_company = :id_company, name = :name , price = :price , quant = :quant , min_quant = 1");
+		$sql->bindValue(":id_company"	, $id_company);
+		$sql->bindValue(":name"			, $name);
+		$sql->bindValue(":price"		, $preco_unidade);
+		$sql->bindValue(":quant"		, $quant);
+		//debug($sql,1);
 
-		$total_price = 0;
-		foreach($quant as $id_prod => $quant_prod) {
-			$sql = $this->db->prepare("SELECT price FROM inventory WHERE id = :id AND id_company = :id_company");
-			$sql->bindValue(":id", $id_prod);
-			$sql->bindValue(":id_company", $id_company);
-			$sql->execute();
-
-			if($sql->rowCount() > 0) {
-				$row = $sql->fetch();
-				$price = $row['price'];
-
-				$sqlp = $this->db->prepare("INSERT INTO sales_products SET id_company = :id_company, id_sale = :id_sale, id_product = :id_product, quant = :quant, sale_price = :sale_price");
-				$sqlp->bindValue(":id_company", $id_company);
-				$sqlp->bindValue(":id_sale", $id_sale);
-				$sqlp->bindValue(":id_product", $id_prod);
-				$sqlp->bindValue(":quant", $quant_prod);
-				$sqlp->bindValue(":sale_price", $price);
-				$sqlp->execute();
-
-				$i->decrease($id_prod, $id_company, $quant_prod, $id_user);
-
-				$total_price += $price * $quant_prod;
-			}
-		}
-
-		$sql = $this->db->prepare("UPDATE sales SET total_price = :total_price WHERE id = :id");
-		$sql->bindValue(":total_price", $total_price);
-		$sql->bindValue(":id", $id_sale);
 		$sql->execute();
 
 	}

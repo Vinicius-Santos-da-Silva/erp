@@ -22,13 +22,13 @@ class purchasesController extends controller {
 
   
 
-        if($u->hasPermission('sales_view')) {
+        if($u->hasPermission('puchases_view')) {
             $s = new Purchases();
             $offset = 0;
 
             $data['purchases_list'] = $s->getList($offset, $u->getCompany(), $u->getId());
 
-            //print_r($data);echo PHP_EOL;
+            //print_r($data);echo PHP_EOL;die();
         	
         	$this->loadTemplate("purchases", $data);
         } else {
@@ -39,26 +39,41 @@ class purchasesController extends controller {
 
 
     public function add() {
+        $this->loadLibrary('debug');
         $data = array();
         $u = new Users();
         $u->setLoggedUser();
         $company = new Companies($u->getCompany());
+        #debug($company,1);
         $data['company_name'] = $company->getName();
         $data['user_email'] = $u->getEmail();
 
         if($u->hasPermission('sales_view')) {
-            $s = new Sales();
+            $s = new Purchases();
 
-            if(isset($_POST['client_id']) && !empty($_POST['client_id'])) {
-                $client_id = addslashes($_POST['client_id']);
-                $status = addslashes($_POST['status']);
-                $quant = $_POST['quant'];
+            if(isset($_POST['unidade_price']) && !empty($_POST['unidade_price'])) {
 
-                $s->addSale($u->getCompany(), $client_id, $u->getId(), $quant, $status);
-                header("Location: ".BASE_URL."/sales");
+
+                
+                $id_user = $u->getId();
+                $id_company = $u->getCompany();
+
+                //debug($_POST,1);
+
+                $produto        = $_POST['product_name'];
+                $preco_unidade  = $_POST['unidade_price'];
+                $preco_total    = $_POST['quant'] * $_POST['unidade_price'];
+                $quant          = $_POST['quant'];
+
+                if ($preco_unidade * $quant > 0) {
+                    $s->addPurchase($id_company, $id_user, $produto, $quant, $preco_unidade, $preco_total);
+                }
+
+
+                header("Location: ".BASE_URL."/purchases");
             }
             
-            $this->loadTemplate("sales_add", $data);
+            $this->loadTemplate("purchases_add", $data);
         } else {
             header("Location: ".BASE_URL);
         }
