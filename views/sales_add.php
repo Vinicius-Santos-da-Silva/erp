@@ -3,8 +3,10 @@
 <form method="POST">
 	<label for="client_name">Nome do Cliente</label><br/>
 	<input type="hidden" name="client_id" />
-	<input type="text" name="client_name" id="client_name" data-type="search_clients" /> <button class="client_add_button">+</button>
+	<input type="text" name="client_name" id="client_name" data-type="search_clients" /> 
+	<button class="client_add_button">+</button>
 	<div style="clear:both"></div>
+
 	<br/><br/>
 
 	<label for="status">Status da Venda</label><br/>
@@ -15,7 +17,7 @@
 	</select><br/><br/>
 
 	<label for="total_price">Preço da Venda</label><br/>
-	<input type="text" name="total_price" disabled="disabled" /><br/><br/>
+	<input type="text" name="total_price"  /><br/><br/>
 
 	<hr/>
 
@@ -23,7 +25,6 @@
 
 	<fieldset>
 		<legend>Adicionar Produto</legend>
-
 		<input type="text" id="add_prod" data-type="search_products" />
 	</fieldset>
 

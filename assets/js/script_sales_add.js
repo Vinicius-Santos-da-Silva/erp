@@ -127,7 +127,8 @@ $(function(){
 
 	});
 
-	$('#add_prod').on('keyup', function(){
+	$('#add_prod').on('blur', function(){
+		//alert('add')
 		var datatype = $(this).attr('data-type');
 		var q = $(this).val();
 

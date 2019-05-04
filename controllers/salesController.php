@@ -154,10 +154,12 @@ class salesController extends controller {
         $data['company_name'] = $company->getName();
         $data['user_email'] = $u->getEmail();
 
+
         if($u->hasPermission('sales_view')) {
             $s = new Sales();
 
             if(isset($_POST['client_id']) && !empty($_POST['client_id'])) {
+                print_r($_POST);echo PHP_EOL;
                 $client_id = addslashes($_POST['client_id']);
                 $status = addslashes($_POST['status']);
                 $quant = $_POST['quant'];

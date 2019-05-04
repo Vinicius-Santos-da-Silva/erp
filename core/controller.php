@@ -23,7 +23,7 @@ class controller {
 	}
 
 	public function loadLibrary($lib) {
-		print_r('libraries/'.$lib.'.php');echo PHP_EOL;
+		//print_r('libraries/'.$lib.'.php');echo PHP_EOL;
 		if(file_exists('libraries/'.$lib.'.php')) {
 			include 'libraries/'.$lib.'.php';
 		}

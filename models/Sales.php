@@ -81,6 +81,7 @@ class Sales extends model {
 		$sql->execute();
 
 		$id_sale = $this->db->lastInsertId();
+        //print_r($id_sale);echo PHP_EOL;die();
 
 		$total_price = 0;
 		foreach($quant as $id_prod => $quant_prod) {
