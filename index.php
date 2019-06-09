@@ -5,10 +5,10 @@ ini_set("display_errors", "on");
 require 'vendor/autoload.php';
 require 'config.php';
 
-define('BASE_URL', 'http://ec2-18-191-78-63.us-east-2.compute.amazonaws.com/contaazul/index.php');
-define('BASE', 'http://ec2-18-191-78-63.us-east-2.compute.amazonaws.com/contaazul');
-#define('BASE_URL', 'http://localhost/contaazul');
-#define('BASE', 'http://localhost/contaazul');
+#define('BASE_URL', 'http://ec2-18-191-78-63.us-east-2.compute.amazonaws.com/contaazul/index.php');
+#define('BASE', 'http://ec2-18-191-78-63.us-east-2.compute.amazonaws.com/contaazul');
+define('BASE_URL', 'http://localhost/contaazul');
+define('BASE', 'http://localhost/contaazul');
 
 
 

@@ -14,10 +14,10 @@ if(ENVIRONMENT == 'development') {
 	$config['dbpass'] = '$T44zg1g1';
 } else {
 	define('BASEPATH', __DIR__.'/');
-	$config['dbname'] = 'YY3Vx3rhhr';
-	$config['host'] = 'remotemysql.com';
-	$config['dbuser'] = 'YY3Vx3rhhr';
-	$config['dbpass'] = 'cYOorvoU1N';
+	$config['dbname'] = 'contaazul';
+	$config['host'] = 'dreamworks.caxubee3zyde.us-east-2.rds.amazonaws.com';
+	$config['dbuser'] = 'vinicius';
+	$config['dbpass'] = 't44zg1g1';
 }
 ?>
 

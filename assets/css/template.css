@@ -1,3 +1,30 @@
+/*Bootstrap*/
+
+.ml-13{
+	margin-left: 13rem!important;
+}
+
+
+
+
+/*Bootstrap*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
 	margin:0;
 	padding:0;
@@ -88,6 +115,12 @@ body {
 .menuarea li:nth-child(8) {
 	background-image:url('../images/reports.png');
 }
+.menuarea li:nth-child(9) {
+	background-image:url('../images/reports.png');
+}
+.menuarea li:nth-child(10) {
+	background-image:url('../images/reports.png');
+}
 .area {
 	padding:15px;
 }
@@ -159,7 +192,7 @@ table {
 table th {
 	height:40px;
 	line-height: 40px;
-	background-color:#DDD;
+	/*s*/
 	text-align: left;
 	padding-left:10px;
 	padding-right: 10px;
@@ -167,7 +200,7 @@ table th {
 table td {
 	height:40px;
 	line-height: 40px;
-	background-color:#EEE;
+	/*background-color:#EEE;*/
 	text-align: left;
 	padding-left:10px;
 	padding-right: 10px;
