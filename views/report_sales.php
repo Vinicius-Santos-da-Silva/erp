@@ -3,8 +3,7 @@
 
 	<div class="report-grid-4">
 		Nome do Cliente:<br/>
-
-		<input type="text" name="client_name" />
+		<select class="js-data-clients-ajax" name="client_id"></select>
 	</div>
 	<div class="report-grid-4">
 		Período:<br/>
@@ -37,4 +36,29 @@
 		<input type="submit" value="Gerar Relatório" />
 	</div>
 </form>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script type="text/javascript" src="<?php echo BASE; ?>/assets/js/report_sales.js"></script>
+
+<script type="text/javascript">
+	$('.js-data-clients-ajax').select2({
+	 	ajax: {
+	    	url: BASE_URL+'/ajax/search_clients',
+	    	dataType: 'json',
+	    	processResults:(usuarios , params)=>{
+	    		
+	    		let results = usuarios.map( (usuario) => {
+	    			return {id:usuario.id , text:usuario.name}
+	    		});
+
+
+	    		return {
+			        results: results,
+			        pagination: {
+			            more: false
+			        }
+			    };
+	    	}
+	 	}
+	});
+</script>

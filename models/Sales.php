@@ -167,7 +167,7 @@ class Sales extends model {
 
 	}
 
-	public function getSalesFiltered($client_name, $period1, $period2, $status, $order, $id_company) {
+	public function getSalesFiltered($client_id, $period1, $period2, $status, $order, $id_company) {
 
 		$array = array();
 
@@ -183,8 +183,8 @@ class Sales extends model {
 		$where = array();
 		$where[] = "sales.id_company = :id_company";
 
-		if(!empty($client_name)) {
-			$where[] = "clients.name LIKE '%".$client_name."%'";
+		if(!empty($client_id)) {
+			$where[] = "clients.id = ".$client_id." ";
 		}
 
 		if(!empty($period1) && !empty($period2)) {
@@ -224,9 +224,14 @@ class Sales extends model {
 
 		$sql->execute();
 
+
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
+
+		// print_r($period1);
+		// print_r($period2);die();
+
 
 		return $array;
 	}

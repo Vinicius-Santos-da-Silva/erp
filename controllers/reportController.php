@@ -66,14 +66,15 @@ class reportController extends controller {
         );
 
         if($u->hasPermission('report_view')) {
-            $client_name = addslashes($_GET['client_name']);
+            $client_id = addslashes($_GET['client_id']);
             $period1 = addslashes($_GET['period1']);
             $period2 = addslashes($_GET['period2']);
             $status = addslashes($_GET['status']);
             $order = addslashes($_GET['order']);
+            // print_r($_GET);die();
 
             $s = new Sales();
-            $data['sales_list'] = $s->getSalesFiltered($client_name, $period1, $period2, $status, $order, $u->getCompany());
+            $data['sales_list'] = $s->getSalesFiltered($client_id, $period1, $period2, $status, $order, $u->getCompany());
 
             $data['filters'] = $_GET;
 
