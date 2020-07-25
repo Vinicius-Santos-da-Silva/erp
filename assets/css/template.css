@@ -181,6 +181,7 @@ button,
 .button_small {
 	height:30px;
 	line-height: 30px;
+	margin-top: 1px;
 }
 .button a {
 	color:#FFF;
@@ -289,8 +290,8 @@ table td {
 	width:40px !important;
 }
 .report_item {
-	width:150px;
-	height:140px;
+	width:170px;
+	height:180px;
 	background-color:#CCC;
 	float:left;
 	margin:20px;
