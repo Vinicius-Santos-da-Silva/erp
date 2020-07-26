@@ -4,6 +4,29 @@ class Users extends model {
 	private $userInfo;
 	private $permissions;
 
+	public function getById($id)
+	{
+		$sql = $this->db->prepare("SELECT * FROM users WHERE id = :id;");
+		$sql->bindValue(':id', $id);
+
+		$sql->execute();
+
+		if($sql->rowCount() == 0) {
+			return false;
+		}
+
+		return $row = $sql->fetch();
+	}
+
+	public function editPassword($id , $password)
+	{
+
+		$sql = $this->db->prepare("UPDATE users SET password = :password WHERE id = :id;");
+		$sql->bindValue(":password", $password);
+		$sql->bindValue(":id", $id);
+		$sql->execute();
+	}
+
 	public function isLogged() {
 
 		if(isset($_SESSION['ccUser']) && !empty($_SESSION['ccUser'])) {
@@ -12,6 +35,29 @@ class Users extends model {
 			return false;
 		}
 
+	}
+
+	public function recuperarSenha($email)
+	{
+		$sql = $this->db->prepare("SELECT * FROM users WHERE email = :email;");
+		
+		$sql->bindValue(':email', $email);
+
+		$sql->execute();
+
+		if($sql->rowCount() > 0) {
+
+			$usuario = $sql->fetch();
+
+			$recuperarModel = new IAM_RecuperarSenha();
+
+			return $recuperarModel->novaRecuperacao($usuario);
+
+		} else {
+
+			return false;
+
+		}
 	}
 
 	public function doLogin($email, $password) {

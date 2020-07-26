@@ -13,6 +13,11 @@ class ajaxController extends controller {
 
     public function index(){}
 
+    public function recuperar_senha()
+    {
+        print_r($_POST);die();
+    }
+
     public function search_clients() {
     	$data = array();
     	$u = new Users();
