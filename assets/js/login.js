@@ -11,9 +11,9 @@ function enviarEmailRecuperacao(_this)
 		url:BASE_URL+'/recuperarSenha/index',
 		type:'POST',
 		data:{email:email},
-		// dataType:'json',
 		success:function(json) {
-			console.log(json)
+			alert('Email de recuperação enviado com sucesso.');
+			$("#exampleModal").modal("hide")
 		}
 
 	});

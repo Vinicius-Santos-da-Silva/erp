@@ -47,7 +47,7 @@ class AWSSES
                 'Destination' => [
                     'ToAddresses' => $recipient_emails,
                 ],
-                'ReplyToAddresses' => $recipient_emails,
+                'ReplyToAddresses' => [$sender_email],
                 'Source' => $sender_email,
                 'Message' => [
                     'Body' => [
